@@ -23,7 +23,11 @@
             @endif
         </div>
 
-        <div class="flex flex-col lg:flex-row lg:justify-center">
+        <div class="flex flex-col lg:flex-row lg:ms-[9rem]">
+            //card
+        </div>
+
+        <div class="flex flex-col lg:flex-row lg:ms-[9rem]">
             <!-- FTP Settings -->
             <div class="w-full lg:max-w-2xl">
                 <div class="bg-white shadow-md rounded-lg mb-6">
@@ -56,8 +60,7 @@
                                     value="{{ old('ftp_port', $ftpSetting->ftp_port ?? '') }}"
                                     class="block w-full px-3 py-2 border rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">
                             </div>
-                            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Update FTP
-                                Settings</button>
+                            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Set FTP</button>
                         </form>
                     </div>
                 </div>
@@ -195,8 +198,8 @@
                                     <input type="checkbox" id="includeHyphens" name="include_hyphens" value="1"
                                         class="mr-2 leading-tight">
                                 </div>
-                                <button type="submit"
-                                    class="px-4 py-2 bg-blue-500 text-white rounded-md">Save</button>
+                                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Set File
+                                    Sequence</button>
                             </form>
                         </div>
                     </div>
@@ -332,8 +335,8 @@
                                     <input type="checkbox" id="caseIncludeHyphens" name="include_hyphens"
                                         value="1" class="mr-2 leading-tight">
                                 </div>
-                                <button type="submit"
-                                    class="px-4 py-2 bg-blue-500 text-white rounded-md">Save</button>
+                                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md">Set Case
+                                    Sequence</button>
                             </form>
                         </div>
                     </div>

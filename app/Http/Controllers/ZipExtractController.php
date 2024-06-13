@@ -65,7 +65,6 @@ class ZipExtractController extends Controller
     public function deleteExtractedFolder()
     {
         $extractedPath = storage_path('app/extracted');
-        // Delete the extracted folder and its contents
         if (File::exists($extractedPath)) {
             File::deleteDirectory($extractedPath);
         }

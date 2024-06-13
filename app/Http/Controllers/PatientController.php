@@ -98,74 +98,74 @@ class PatientController extends Controller
     }
 
 
-    private function getNextAvailableStarterNumber($currentStarterNumber)
-    {
-        // Check if the current starter number already exists in the database
-        $existingPatient = Patient::where('caseNo', 'LIKE', '%' . $currentStarterNumber . '%')->first();
+    // private function getNextAvailableStarterNumber($currentStarterNumber)
+    // {
+    //     // Check if the current starter number already exists in the database
+    //     $existingPatient = Patient::where('caseNo', 'LIKE', '%' . $currentStarterNumber . '%')->first();
 
-        // If the current starter number exists, increment it until a unique one is found
-        if ($existingPatient) {
-            $nextStarterNumber = (int) $currentStarterNumber + 1; // Cast $currentStarterNumber to integer
-            return $this->getNextAvailableStarterNumber($nextStarterNumber);
-        }
+    //     // If the current starter number exists, increment it until a unique one is found
+    //     if ($existingPatient) {
+    //         $nextStarterNumber = (int) $currentStarterNumber + 1; // Cast $currentStarterNumber to integer
+    //         return $this->getNextAvailableStarterNumber($nextStarterNumber);
+    //     }
 
-        return $currentStarterNumber;
-    }
+    //     return $currentStarterNumber;
+    // }
 
-    private function generateCaseNumber($caseFormat, $starterNumber)
-    {
-        $caseNo = '';
+    // private function generateCaseNumber($caseFormat, $starterNumber)
+    // {
+    //     $caseNo = '';
 
-        // Construct the case number based on the case format configuration
-        if ($caseFormat->prefix) {
-            // Handle prefix
-            if ($caseFormat->prefix === 'string') {
-                $caseNo .= $caseFormat->prefix_value;
-            } elseif ($caseFormat->prefix === 'date') {
-                // Handle date prefix
-                $caseNo .= $this->formatDate($caseFormat->prefix_date, $caseFormat, 'prefix');
-            }
-        }
+    //     // Construct the case number based on the case format configuration
+    //     if ($caseFormat->prefix) {
+    //         // Handle prefix
+    //         if ($caseFormat->prefix === 'string') {
+    //             $caseNo .= $caseFormat->prefix_value;
+    //         } elseif ($caseFormat->prefix === 'date') {
+    //             // Handle date prefix
+    //             $caseNo .= $this->formatDate($caseFormat->prefix_date, $caseFormat, 'prefix');
+    //         }
+    //     }
 
-        // Handle auto number
-        if ($caseFormat->auto_number) {
-            // Incremental logic for auto number
-            $autoNumber = str_pad($starterNumber, 3, '0', STR_PAD_LEFT);
-            $caseNo .= ($caseFormat->include_hyphens ? '-' : '') . $autoNumber;
-        }
+    //     // Handle auto number
+    //     if ($caseFormat->auto_number) {
+    //         // Incremental logic for auto number
+    //         $autoNumber = str_pad($starterNumber, 3, '0', STR_PAD_LEFT);
+    //         $caseNo .= ($caseFormat->include_hyphens ? '-' : '') . $autoNumber;
+    //     }
 
-        if ($caseFormat->suffix) {
-            // Handle suffix
-            if ($caseFormat->suffix === 'string') {
-                $caseNo .= ($caseFormat->include_hyphens ? '-' : '') . $caseFormat->suffix_value;
-            } elseif ($caseFormat->suffix === 'date') {
-                // Handle date suffix
-                $caseNo .= ($caseFormat->include_hyphens ? '-' : '') . $this->formatDate($caseFormat->suffix_date, $caseFormat, 'suffix');
-            }
-        }
+    //     if ($caseFormat->suffix) {
+    //         // Handle suffix
+    //         if ($caseFormat->suffix === 'string') {
+    //             $caseNo .= ($caseFormat->include_hyphens ? '-' : '') . $caseFormat->suffix_value;
+    //         } elseif ($caseFormat->suffix === 'date') {
+    //             // Handle date suffix
+    //             $caseNo .= ($caseFormat->include_hyphens ? '-' : '') . $this->formatDate($caseFormat->suffix_date, $caseFormat, 'suffix');
+    //         }
+    //     }
 
-        return $caseNo;
-    }
+    //     return $caseNo;
+    // }
 
-    private function formatDate($date, $caseFormat, $type)
-    {
-        $formattedDate = '';
-        $year = date('Y', strtotime($date));
-        $month = date('m', strtotime($date));
-        $day = date('d', strtotime($date));
+    // private function formatDate($date, $caseFormat, $type)
+    // {
+    //     $formattedDate = '';
+    //     $year = date('Y', strtotime($date));
+    //     $month = date('m', strtotime($date));
+    //     $day = date('d', strtotime($date));
 
-        if ($caseFormat->{$type . '_year_only'}) {
-            $formattedDate .= ($caseFormat->{$type . '_year_format'} === 'short' ? substr($year, -2) : $year);
-        }
+    //     if ($caseFormat->{$type . '_year_only'}) {
+    //         $formattedDate .= ($caseFormat->{$type . '_year_format'} === 'short' ? substr($year, -2) : $year);
+    //     }
 
-        if ($caseFormat->{$type . '_month_only'}) {
-            $formattedDate .= ($formattedDate && $caseFormat->include_hyphens ? '-' : '') . $month;
-        }
+    //     if ($caseFormat->{$type . '_month_only'}) {
+    //         $formattedDate .= ($formattedDate && $caseFormat->include_hyphens ? '-' : '') . $month;
+    //     }
 
-        if ($caseFormat->{$type . '_day_only'}) {
-            $formattedDate .= ($formattedDate && $caseFormat->include_hyphens ? '-' : '') . $day;
-        }
+    //     if ($caseFormat->{$type . '_day_only'}) {
+    //         $formattedDate .= ($formattedDate && $caseFormat->include_hyphens ? '-' : '') . $day;
+    //     }
 
-        return $formattedDate;
-    }
+    //     return $formattedDate;
+    // }
 }

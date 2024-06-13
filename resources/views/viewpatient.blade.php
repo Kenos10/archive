@@ -95,7 +95,13 @@
                             <tr>
                                 <th
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Zip</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Date Created</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Date Updated</th>
                                 <th
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Actions</th>
@@ -104,12 +110,13 @@
                         <tbody>
                             @foreach ($zipfile as $zip)
                                 <tr>
+                                    <td class="px-4 py-2">{{ $zip->hospitalRecordId }}</td>
                                     <td class="px-4 py-2">{{ $zip->created_at->format('F j, Y, h:i:s a') }}</td>
+                                    <td class="px-4 py-2">{{ $zip->updated_at->format('F j, Y, h:i:s a') }}</td>
                                     <td class="px-4 py-2">
                                         <div class="btn-group" role="group" aria-label="Zip Actions">
                                             <a href="{{ route('zip', $zip->id) }}"
                                                 class="download-link bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Download</a>
-                                            {{-- PLEASE UPDATE --}}
                                             <a href="{{ route('store.zip', $zip->id) }}"
                                                 class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Archive</a>
                                         </div>

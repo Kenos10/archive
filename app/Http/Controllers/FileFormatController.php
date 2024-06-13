@@ -30,8 +30,8 @@ class FileFormatController extends Controller
         // Delete any existing records
         FileFormat::truncate();
 
+        // Create the new record
         $created = FileFormat::create($request->all());
-
         return back()->with('success', 'Record created successfully');
     }
 }

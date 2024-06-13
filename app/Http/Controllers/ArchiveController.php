@@ -72,12 +72,14 @@ class ArchiveController extends Controller
             }
             $zip->close();
 
-            Archive::create([
-                'zip' => '/storage/zip_files/' . $hospitalRecordId . '.zip',
-                'hospitalRecordId' => $hospitalRecordId,
-            ]);
+            $archive = Archive::updateOrCreate(
+                ['hospitalRecordId' => $hospitalRecordId],
+                ['zip' => '/storage/zip_files/' . $hospitalRecordId . '.zip']
+            );
 
-            // Add a success message to the session
+            // Touch the model to update the timestamps
+            $archive->touch();
+
             return redirect()->back()->with('success', 'Zip file created');
         } else {
             return redirect()->back()->withInput()->withErrors(['error' => 'Failed to create the zip file.']);
