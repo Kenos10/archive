@@ -1,10 +1,9 @@
 <?php
 
-// DashboardController.php
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB; // Add this import if you're using DB facade
+use DB;
 
 class DashboardController extends Controller
 {
@@ -15,7 +14,6 @@ class DashboardController extends Controller
         $zipCount = DB::table('archives')->count();
         $patientCount = DB::table('patients')->count();
 
-        // Pass the count to the view
         return view('dashboard', compact(['fileCount', 'zipCount', 'patientCount']));
     }
 }

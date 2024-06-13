@@ -46,15 +46,13 @@ Route::middleware('auth')->group(function () {
         return view('viewzip');
     })->name('viewzip');
 
-    Route::get('/setting', function () {
-        return view('setting');
-    })->name('setting');
+    Route::get('/setting', [ArchiveController::class, 'setting'])->name('setting');
 
     Route::get('/extract', function () {
         return view('viewzip');
     })->name('extract');
 
-    Route::get('/settings', [ArchiveController::class, 'showFtpSettings'])->name('settings');
+    Route::get('/setting', [ArchiveController::class, 'setting'])->name('setting');
     Route::post('/update-ftp-settings', [ArchiveController::class, 'updateFtpSettings'])->name('update.ftp.settings');
     Route::get('/downloadzip/{id}', [ArchiveController::class, 'download'])->name('zip');
     Route::get('/storezip/{id}', [ArchiveController::class, 'downloadPath'])->name('store.zip');

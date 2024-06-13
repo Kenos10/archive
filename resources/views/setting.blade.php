@@ -24,7 +24,42 @@
         </div>
 
         <div class="flex flex-col lg:flex-row lg:ms-[9rem]">
-            //card
+            <!-- Current Settings Card -->
+            <div class="w-full lg:max-w-2xl">
+                <div class="bg-white shadow-md rounded-lg mb-6">
+                    <div class="bg-gray-100 px-6 py-4 border-b">
+                        <h3 class="text-lg font-semibold">Current Settings</h3>
+                    </div>
+                    <div class="px-6 py-4">
+                        <h4 class="text-md font-semibold">FTP Settings</h4>
+                        <p><strong>Host:</strong> {{ $ftpSetting->ftp_host ?? 'N/A' }}</p>
+                        <p><strong>Username:</strong> {{ $ftpSetting->ftp_username ?? 'N/A' }}</p>
+                        <p><strong>Password:</strong> {{ $ftpSetting->ftp_password ? '********' : 'N/A' }}</p>
+                        <p><strong>Port:</strong> {{ $ftpSetting->ftp_port ?? 'N/A' }}</p>
+
+                        <h4 class="text-md font-semibold mt-4">File Format</h4>
+                        <p><strong>Prefix:</strong> {{ $fileFormat->prefix ?? 'N/A' }}</p>
+                        <p><strong>Prefix Value:</strong> {{ $fileFormat->prefix_value ?? 'N/A' }}</p>
+                        <p><strong>Suffix:</strong> {{ $fileFormat->suffix ?? 'N/A' }}</p>
+                        <p><strong>Suffix Value:</strong> {{ $fileFormat->suffix_value ?? 'N/A' }}</p>
+                        <p><strong>Auto Number:</strong> {{ $fileFormat->auto_number ? 'Enabled' : 'Disabled' }}</p>
+                        <p><strong>Starter Number:</strong> {{ $fileFormat->starter_number ?? 'N/A' }}</p>
+                        <p><strong>Auto Number Format:</strong> {{ $fileFormat->auto_number_format ?? 'N/A' }}</p>
+                        <p><strong>Include Hyphens:</strong> {{ $fileFormat->include_hyphens ? 'Yes' : 'No' }}</p>
+
+                        <h4 class="text-md font-semibold mt-4">Case Format</h4>
+                        <p><strong>Prefix:</strong> {{ $caseFormat->prefix ?? 'N/A' }}</p>
+                        <p><strong>Prefix Value:</strong> {{ $caseFormat->prefix_value ?? 'N/A' }}</p>
+                        <p><strong>Suffix:</strong> {{ $caseFormat->suffix ?? 'N/A' }}</p>
+                        <p><strong>Suffix Value:</strong> {{ $caseFormat->suffix_value ?? 'N/A' }}</p>
+                        <p><strong>Auto Number:</strong> {{ $caseFormat->auto_number ? 'Enabled' : 'Disabled' }}</p>
+                        <p><strong>Starter Number:</strong> {{ $caseFormat->starter_number ?? 'N/A' }}</p>
+                        <p><strong>Auto Number Format:</strong> {{ $caseFormat->auto_number_format ?? 'N/A' }}</p>
+                        <p><strong>Include Hyphens:</strong> {{ $caseFormat->include_hyphens ? 'Yes' : 'No' }}</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="flex flex-col lg:flex-row lg:ms-[9rem]">

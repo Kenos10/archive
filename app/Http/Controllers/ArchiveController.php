@@ -9,6 +9,8 @@ use App\Models\Patient;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\Archive;
 use App\Models\FtpSetting;
+use App\Models\CaseFormat;
+use App\Models\FileFormat;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Config;
@@ -154,7 +156,6 @@ class ArchiveController extends Controller
         }
     }
 
-
     public function updateFtpSettings(Request $request)
     {
         $request->validate([
@@ -175,14 +176,12 @@ class ArchiveController extends Controller
         return redirect()->back()->with('success', 'FTP settings updated successfully');
     }
 
-    public function showFtpSettings()
-    {
-        $ftpSetting = FtpSetting::first();
-        return view('settings', compact('ftpSetting'));
-    }
-
     public function setting()
     {
-        return view('setting');
+        $ftpSetting = FtpSetting::first();
+        $caseFormat = CaseFormat::first();
+        $fileFormat = FileFormat::first();
+
+        return view('setting', compact('ftpSetting', 'caseFormat', 'fileFormat'));
     }
 }
