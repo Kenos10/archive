@@ -1,3 +1,4 @@
+{{-- FILE LIST --}}
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center w-full">
@@ -30,6 +31,10 @@
                     </th>
                     <th scope="col"
                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Date Created
+                    </th>
+                    <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         File
                     </th>
                     <th scope="col" class="relative px-6 py-3">
@@ -42,6 +47,9 @@
                     <tr class="hover:bg-gray-50">
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="text-sm text-gray-900">{{ $file->hospitalRecordId }}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm text-gray-900">{{ $file->created_at->format('F j, Y, h:i:s a') }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="text-sm text-gray-900">{{ $file->fileName }}</div>

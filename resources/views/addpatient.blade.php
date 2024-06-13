@@ -1,3 +1,4 @@
+{{-- ADD PATIENT\ARCHIVE --}}
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-2xl text-gray-900">

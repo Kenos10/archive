@@ -1,3 +1,4 @@
+{{-- PATIENT DETAIL --}}
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-2xl text-gray-900 leading-tight">{{ __('Patient Details') }}</h2>
@@ -69,6 +70,9 @@
                                     Select</th>
                                 <th
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Date Uploaded</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     File</th>
                             </tr>
                         </thead>
@@ -77,6 +81,9 @@
                                 <tr>
                                     <td class="px-4 py-2"><input type="checkbox" name="files[]"
                                             value="{{ $file->id }}"></td>
+                                    <td class="px-4 py-2">
+                                        {{ $file->created_at->format('F j, Y, h:i:s a') }}
+                                    </td>
                                     <td class="px-4 py-2">{{ $file->fileName }}</td>
                                 </tr>
                             @endforeach
@@ -157,7 +164,6 @@
                 },
                 success: function(file, response) {
                     document.getElementById('message').innerText = 'File has been uploaded successfully.';
-                    // console.log(response);
                     // Refresh the page after successful upload
                     setTimeout(function() {
                         location.reload();
@@ -165,7 +171,6 @@
                 },
                 error: function(file, response) {
                     document.getElementById('message').innerText = 'Something went wrong: ' + response;
-                    // console.log(response);
                 }
             };
 
